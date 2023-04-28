@@ -9,4 +9,8 @@ class TaskRepository
     def save(task)
         @datastore.create(@name, task)
     end
+
+    def get_all
+        @datastore.read(@name)
+    end
 end

@@ -21,6 +21,10 @@ class TodoController
     end
 
     def list_todos 
+        clear_screen
+        tasks = @repository.get_all
+        p tasks
+
         render_message("Listing todos...", "success")
     end
 

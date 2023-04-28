@@ -7,14 +7,16 @@ class JsonFileService
     end
 
     def add_key_value(key, value)
-        data = get_data_key
+        data = get_data_key["data"]
 
         if data.has_key?(key)
             return
+        else
+            data["data"][key] = value
+            write_file(data.to_json)
         end
 
-        data["data"][key] = value
-        write_file(data.to_json)
+       
         self
     end
 
@@ -23,6 +25,12 @@ class JsonFileService
         file_data = data["data"]
         file_data[key] << dataToSave
         write_file(data.to_json)
+    end
+
+    def read(key)
+        data = get_data_key
+        file_data = data["data"]
+        file_data[key]
     end
 
     private
