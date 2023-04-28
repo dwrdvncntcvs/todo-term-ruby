@@ -45,8 +45,8 @@ module TerminalView
         }
     end
 
-    def render_id_form
-        render_header("Mark Task as Done", :green)
+    def render_id_form (message)
+        render_header(message, :green)
         puts "Enter Task ID:"
         gets.chomp
     end

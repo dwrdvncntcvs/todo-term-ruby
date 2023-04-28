@@ -22,6 +22,7 @@ class TodoController
 
     def list_todos 
         clear_screen
+        render_message("All tasks successfully retrieved", "success")
         tasks = @repository.get_all
 
         render_row(["ID", "Description", "Status"])
@@ -34,10 +35,26 @@ class TodoController
         end
         empty
 
-        render_message("All tasks successfully retrieved", "success")
     end
 
     def update_todo
+        clear_screen
+        id = render_id_form("Update Task")
+
+        data = @repository.get_by_id(id)
+
+        if data == nil
+            render_message("Task not found", "error")
+            return
+        end
+
+        description, is_done = render_task_form.values_at(:description, :is_done)
+
+        data["description"] = description
+        data["is_done"] = false
+
+        @repository.update(data)
+
         render_message("Updating todo...", "success")
     end
 
@@ -47,7 +64,7 @@ class TodoController
 
     def mark_todo
         clear_screen
-        id = render_id_form
+        id = render_id_form("Mark Task Done")
         
         data = @repository.get_by_id(id)
 

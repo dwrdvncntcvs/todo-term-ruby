@@ -57,6 +57,8 @@ module Todo
                     lambda { @todo_controller.create_todo })
                 .add("📃 List All Tasks",
                     lambda { @todo_controller.list_todos })
+                .add("📝 Update Task", 
+                    lambda { @todo_controller.update_todo})
                 .add("✅ Mark Task as Done",
                     lambda { @todo_controller.mark_todo })
                 .add("❌ Delete Task",

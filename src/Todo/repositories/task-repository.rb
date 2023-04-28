@@ -22,4 +22,8 @@ class TaskRepository
         task_data["is_done"] = true
         @datastore.update(@name, task_data)
     end
+
+    def update(data)
+        @datastore.update(@name, data)
+    end
 end
