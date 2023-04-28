@@ -32,12 +32,12 @@ module Todo
             end
         end
 
+        private
+
         def quit
             @is_app_running = false
             @todo_controller.quit
         end
-
-        private
 
         def initialize_deps
             @todo_controller = TodoController.new
