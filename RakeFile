@@ -5,3 +5,7 @@ end
 task :bundle_gems do
     system("bundle exec yard gems")
 end
+
+task :install do
+    system("bundle install")
+end
