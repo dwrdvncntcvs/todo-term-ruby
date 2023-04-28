@@ -26,4 +26,8 @@ class TaskRepository
     def update(data)
         @datastore.update(@name, data)
     end
+
+    def delete(data)
+        @datastore.delete(@name, data)
+    end
 end

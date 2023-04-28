@@ -44,6 +44,14 @@ class JsonFileService
         write_file(data.to_json)
     end
 
+    def delete(key, deleteData)
+        data = get_data_key
+        file_data = data["data"]
+        new_data = file_data[key].filter { |item| item["id"] != deleteData["id"] }
+        file_data[key] = new_data
+        write_file(data.to_json)
+    end
+
     private
 
     def open_file

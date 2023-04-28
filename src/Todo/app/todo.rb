@@ -19,7 +19,7 @@ module Todo
 
         def start 
            while @is_app_running
-                render_header("Todo App", :red)
+                render_header("Todo App", :green)
                 selected_option = render_instruction(@instructions)
 
                 for index in 0...@instructions.length do
@@ -30,6 +30,11 @@ module Todo
                     if id == selected_option
                         action.call()
                     end
+                end
+
+                if (selected_option < 1 || selected_option > @instructions.length)
+                    clear_screen
+                    render_message("Invalid Option", "error")
                 end
             end
         end

@@ -35,7 +35,7 @@ module TerminalView
     end
 
     def render_task_form
-        render_header("Create New Task", :red)
+        render_header("Create New Task", :green)
         puts "Enter task description:"
         description = gets.chomp
 

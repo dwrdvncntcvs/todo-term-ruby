@@ -55,11 +55,24 @@ class TodoController
 
         @repository.update(data)
 
-        render_message("Updating todo...", "success")
+        render_message("Task Successfully Updated", "success")
     end
 
     def delete_todo
-        render_message("Deleting todo...", "success")
+        clear_screen
+
+        id = render_id_form("Delete Task")
+
+        data = @repository.get_by_id(id)
+
+        if data == nil
+            render_message("Task not found", "error")
+            return
+        end
+
+        @repository.delete(data)
+
+        render_message("#{data["description"]} Deleted Successfully", "success")
     end
 
     def mark_todo
@@ -75,7 +88,7 @@ class TodoController
 
         @repository.mark_as_done(data)
 
-        render_message("Marking todo...", "success")
+        render_message("Task Completed.", "success")
     end
 
     def quit
