@@ -23,8 +23,10 @@ module TerminalView
         color = :green if status == "success"
         color = :yellow if status == "warning"
 
-        empty
-        puts content.colorize(color)
+        message = "| #{content} |"
+        puts ("-".*message.length).colorize(color)
+        puts message.colorize(color)
+        puts ("-".*message.length).colorize(color)
         empty
     end
     
