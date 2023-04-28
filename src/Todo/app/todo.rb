@@ -34,7 +34,7 @@ module Todo
 
         def quit
             @is_app_running = false
-            render_message("Good Bye!", "success")
+            @todo_controller.quit
         end
 
         private

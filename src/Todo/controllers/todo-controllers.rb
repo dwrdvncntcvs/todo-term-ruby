@@ -22,4 +22,8 @@ class TodoController
     def mark_todo
         render_message("Marking todo...", "success")
     end
+
+    def quit
+        render_message("Good Bye!", "success")
+    end
 end
