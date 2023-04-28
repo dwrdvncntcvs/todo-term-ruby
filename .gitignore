@@ -1,3 +1,5 @@
 vendor
 Gemfile.lock
 data.json
+
+*.sh
