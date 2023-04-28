@@ -42,7 +42,11 @@ module Todo
         end
 
         def initialize_deps
-            taskRepo = TaskRepository.new("task", JsonFileService.new("data.json"))
+            datastore = JsonFileService.new("data.json")
+            datastore
+                .add_key_value("tasks", [])
+            
+            taskRepo = TaskRepository.new("task", datastore)
             @todo_controller = TodoController.new(taskRepo)
         end
 
