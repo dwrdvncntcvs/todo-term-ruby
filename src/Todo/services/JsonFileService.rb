@@ -9,7 +9,7 @@ class JsonFileService
     def add_key_value(key, value)
         data = get_data_key
 
-        if !data.has_key?(key)
+        if !data["data"].has_key?(key)
             data["data"][key] = value
             write_file(data.to_json)
             return self

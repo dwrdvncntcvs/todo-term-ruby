@@ -54,7 +54,13 @@ module TerminalView
     def render_row(items)
         d = "|"
         items.each do |item|
-            d += " #{pad(item, 20)} |"
+            if item == "Done"
+                d +=" #{pad(item, 20).colorize(:green)} |"
+            elsif item == "Pending"
+                d += " #{pad(item, 20).colorize(:yellow)} |"
+            else
+                d += " #{pad(item, 20)} |"
+            end
         end
 
         puts d
