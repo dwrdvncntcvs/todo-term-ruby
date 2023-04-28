@@ -9,12 +9,14 @@ class TodoController
     end
 
     def create_todo
+        clear_screen
         description, is_done = render_task_form.values_at(:description, :is_done)
 
         task = Task.new(description, is_done)
         data = task.get_task
 
         @repository.save(data)
+        clear_screen
         render_message("#{data[:description]} successfully created...", "success")
     end
 

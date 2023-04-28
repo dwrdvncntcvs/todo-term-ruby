@@ -42,4 +42,8 @@ module TerminalView
             is_done: false
         }
     end
+
+    def clear_screen
+        system("clear")
+    end
 end
