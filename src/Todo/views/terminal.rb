@@ -45,7 +45,20 @@ module TerminalView
         }
     end
 
+    def render_row(items)
+        d = "|"
+        items.each do |item|
+            d += " #{pad(item, 20)} |"
+        end
+
+        puts d
+    end
+
     def clear_screen
         system("clear")
+    end
+
+    def pad(content, size)
+        content.ljust(size)
     end
 end

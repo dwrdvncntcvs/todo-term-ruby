@@ -23,9 +23,18 @@ class TodoController
     def list_todos 
         clear_screen
         tasks = @repository.get_all
-        p tasks
 
-        render_message("Listing todos...", "success")
+        render_row(["ID", "Description", "Status"])
+        tasks.each do |task|
+            render_row([
+                task["id"], 
+                task["description"], 
+                task["is_done"] ? "Done" : "Pending"
+            ])
+        end
+        empty
+
+        render_message("All tasks successfully retrieved", "success")
     end
 
     def update_todo
@@ -41,6 +50,7 @@ class TodoController
     end
 
     def quit
+        clear_screen
         render_message("Good Bye!", "success")
     end
 end
