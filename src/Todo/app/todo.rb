@@ -1,6 +1,8 @@
 require_relative '../views/terminal.rb'
 require_relative "../factories/instructionFactory.rb"
 require_relative "../controllers/todo-controllers.rb"
+require_relative "../repositories/task-repository.rb"
+require_relative "../services/JsonFileService.rb"
 
 module Todo
     class Client
@@ -40,7 +42,8 @@ module Todo
         end
 
         def initialize_deps
-            @todo_controller = TodoController.new
+            taskRepo = TaskRepository.new("task", JsonFileService.new("data.json"))
+            @todo_controller = TodoController.new(taskRepo)
         end
 
         def initialize_instructions

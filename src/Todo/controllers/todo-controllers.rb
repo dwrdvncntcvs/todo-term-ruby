@@ -1,10 +1,19 @@
 require_relative "../views/terminal.rb"
+require_relative "../models/Task.rb"
 
 class TodoController
     include TerminalView
 
+    def initialize(repository)
+        @repository = repository
+    end
+
     def create_todo
-        render_message("Creating todo...", "success")
+        task = Task.new("Task 1", "This is a task")
+        data = task.get_task
+
+        @repository.save(data)
+        render_message("#{data[:description]} successfully created...", "success")
     end
 
     def list_todos 
