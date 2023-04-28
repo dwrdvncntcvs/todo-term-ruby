@@ -31,4 +31,15 @@ module TerminalView
     def empty
         puts ""
     end
+
+    def render_task_form
+        render_header("Create New Task", :red)
+        puts "Enter task description:"
+        description = gets.chomp
+
+        {
+            description: description,
+            is_done: false
+        }
+    end
 end

@@ -9,7 +9,9 @@ class TodoController
     end
 
     def create_todo
-        task = Task.new("Task 1", "This is a task")
+        description, is_done = render_task_form.values_at(:description, :is_done)
+
+        task = Task.new(description, is_done)
         data = task.get_task
 
         @repository.save(data)
