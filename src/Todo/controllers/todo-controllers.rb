@@ -54,7 +54,7 @@ class TodoController
         data["is_done"] = false
 
         @repository.update(data)
-
+        clear_screen
         render_message("Task Successfully Updated", "success")
     end
 
@@ -71,7 +71,7 @@ class TodoController
         end
 
         @repository.delete(data)
-
+        clear_screen
         render_message("#{data["description"]} Deleted Successfully", "success")
     end
 
@@ -87,7 +87,7 @@ class TodoController
         end
 
         @repository.mark_as_done(data)
-
+        clear_screen
         render_message("Task Completed.", "success")
     end
 
