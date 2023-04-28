@@ -45,6 +45,12 @@ module TerminalView
         }
     end
 
+    def render_id_form
+        render_header("Mark Task as Done", :green)
+        puts "Enter Task ID:"
+        gets.chomp
+    end
+
     def render_row(items)
         d = "|"
         items.each do |item|

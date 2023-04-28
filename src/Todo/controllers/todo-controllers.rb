@@ -46,6 +46,18 @@ class TodoController
     end
 
     def mark_todo
+        clear_screen
+        id = render_id_form
+        
+        data = @repository.get_by_id(id)
+
+        if data == nil
+            render_message("Task not found", "error")
+            return
+        end
+
+        @repository.mark_as_done(data)
+
         render_message("Marking todo...", "success")
     end
 
