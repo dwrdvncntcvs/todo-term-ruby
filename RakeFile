@@ -9,3 +9,7 @@ end
 task :install do
     system("bundle install")
 end
+
+task :test do
+    system("rspec --format doc --color")
+end
