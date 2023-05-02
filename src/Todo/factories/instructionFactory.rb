@@ -15,8 +15,4 @@ class InstructionFactory
         @instructions.push(inst)
         self
     end
-
-    def instructions
-        @instructions
-    end
 end
