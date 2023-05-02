@@ -23,7 +23,7 @@ class TodoController
     def list_todos 
         clear_screen
         render_message("All tasks successfully retrieved", "success")
-        tasks = @repository.get_all
+        tasks = @repository.find_all
 
         render_row(["ID", "Description", "Status"])
         tasks.each do |task|
@@ -41,7 +41,7 @@ class TodoController
         clear_screen
         id = render_id_form("Update Task")
 
-        data = @repository.get_by_id(id)
+        data = @repository.find_by_id(id)
 
         if data == nil
             render_message("Task not found", "error")
@@ -63,7 +63,7 @@ class TodoController
 
         id = render_id_form("Delete Task")
 
-        data = @repository.get_by_id(id)
+        data = @repository.find_by_id(id)
 
         if data == nil
             render_message("Task not found", "error")
@@ -79,14 +79,14 @@ class TodoController
         clear_screen
         id = render_id_form("Mark Task Done")
         
-        data = @repository.get_by_id(id)
+        data = @repository.find_by_id(id)
 
         if data == nil
             render_message("Task not found", "error")
             return
         end
 
-        @repository.mark_as_done(data)
+        @repository.complete_task(data)
         clear_screen
         render_message("Task Completed.", "success")
     end

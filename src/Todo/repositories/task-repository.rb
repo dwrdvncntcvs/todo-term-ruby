@@ -10,15 +10,15 @@ class TaskRepository
         @datastore.create(@name, task)
     end
 
-    def get_all
+    def find_all
         @datastore.read(@name)
     end
 
-    def get_by_id(id)
+    def find_by_id(id)
         @datastore.read_specific_data(@name, { id: id })
     end
 
-    def mark_as_done(task_data)
+    def complete_task(task_data)
         task_data["is_done"] = true
         @datastore.update(@name, task_data)
     end
