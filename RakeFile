@@ -11,5 +11,12 @@ task :install do
 end
 
 task :test do
-    system("rspec --format doc --color")
+    entries = Dir.entries("./tests/Todo")
+                 .filter {|file| !File.exist?(file)}
+
+    entries.each do |file|
+        if file != "." || file != ".."
+            system("cd tests/Todo && ruby #{file}")
+        end
+    end
 end

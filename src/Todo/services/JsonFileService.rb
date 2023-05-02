@@ -52,6 +52,10 @@ class JsonFileService
         write_file(data.to_json)
     end
 
+    def reset_json_data
+        write_file('{ "data": {} }')
+    end
+
     private
 
     def open_file
